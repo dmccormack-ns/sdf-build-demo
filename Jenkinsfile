@@ -1,7 +1,10 @@
-node('linux') {
-  def maven = docker.image('maven:latest')
-  maven.pull() // make sure we have the latest available from Docker Hub
-  maven.inside {
-    sh 'echo test'
+pipeline {
+  agent {
+    docker {image 'hello-world'}
+  }
+  stages {
+    stage('Test docker') {
+      sh 'echo test'
+    }
   }
 }
