@@ -1,12 +1,7 @@
-pipeline {
-  agent any
-  stages {
-    stage('Init Pipeline') {
-      steps {
-        docker.image('hello-world').inside {
-          sh 'echo Hello'
-      }
-    }
+node('linux') {
+  def maven = docker.image('maven:latest')
+  maven.pull() // make sure we have the latest available from Docker Hub
+  maven.inside {
+    sh 'echo test'
   }
-}
 }
