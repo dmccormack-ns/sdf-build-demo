@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Init Pipeline') {
       steps {
-        echo 'Test Init'
+        docker.image('hello-world').inside {
+          sh 'echo Hello'
       }
     }
   }
