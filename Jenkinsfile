@@ -4,7 +4,9 @@ pipeline {
   }
   stages {
     stage('Test docker') {
-      sh 'echo test'
+      step {
+        sh 'echo test'
+      }
     }
   }
 }
